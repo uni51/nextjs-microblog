@@ -1,10 +1,11 @@
 /* eslint-disable @next/next/no-img-element */
 import Link from 'next/link';
 
-import Layout from '../components/Layout';
+import Layout, { siteTitle } from '../components/Layout';
 import styles from "../styles/Home.module.css";
 import utilStyles from "../styles/utils.module.css";
 import { getPostsData } from '../lib/post';
+import Head from 'next/head';
 
 // SSGの場合（外部のデータをビルド時に一度だけ読み込む）
 export async function getStaticProps() {
@@ -30,6 +31,9 @@ export default function Home({ allPostData }) {
 
   return (
     <Layout home>
+      <Head>
+        <title>{siteTitle}</title>
+      </Head>
       <section className={utilStyles.headingMd}>
         <p>
           私はフルスタックエンジニアです。会社経営者ととして活動しています。好きなFWはLaravelです。

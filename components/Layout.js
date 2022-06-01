@@ -3,6 +3,7 @@ import Head from "next/head";
 
 import styles from "./layout.module.css";
 import utilStyles from "../styles/utils.module.css";
+import Link from "next/link";
 
 const name = "Omokaji Code";
 export const siteTitle = "Next.js blog";
@@ -35,6 +36,11 @@ function Layout({ children, home }) {
 				)}
 			</header>
 			<main>{children}</main>
+			{!home && (
+				<div>
+					<Link href="/">← ホームへ戻る</Link>
+				</div>
+			)}
 		</div>
 	);
 }
