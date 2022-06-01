@@ -4,8 +4,21 @@ import Link from 'next/link';
 import Layout from '../components/Layout';
 import styles from "../styles/Home.module.css";
 import utilStyles from "../styles/utils.module.css";
+import { getPostsData } from '../lib/post';
 
-export default function Home() {
+// SSGの場合
+export async function getStaticProps() {
+  const allPostData = getPostsData(); // id , title, date, thumbnail
+
+  return {
+    props: {
+      allPostData,
+    },
+  };
+}
+
+export default function Home({ allPostData }) {
+  console.log(allPostData);
   return (
     <Layout>
       <section className={utilStyles.headingMd}>
