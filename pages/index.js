@@ -36,7 +36,7 @@ export default function Home({ allPostData }) {
       </Head>
       <section className={utilStyles.headingMd}>
         <p>
-          私はフルスタックエンジニアです。会社経営者ととして活動しています。好きなFWはLaravelです。
+          私はNext.js学習中のエンジニアです。会社経営者ととして活動しています。好きなFWはLaravelです。
         </p>
       </section>
 
