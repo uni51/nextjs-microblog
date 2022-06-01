@@ -1,5 +1,5 @@
 import Layout from "../../components/Layout";
-import { getAllPostIds } from "../../lib/post";
+import { getAllPostIds, getPostData } from "../../lib/post";
 
 // SSG
 export async function getStaticPaths() {
@@ -11,14 +11,25 @@ export async function getStaticPaths() {
 	}
 }
 
+// SSGの場合（外部のデータをビルド時に一度だけ読み込む）
 export async function getStaticProps({ params }) {
+	const postData = await getPostData(params.id);
 
+  return {
+    props: {
+      postData,
+    },
+  };
 }
 
-export default function Post() {
+export default function Post({ postData }) {
 	return (
 		<Layout>
-			動的ルーティング設定
+			{postData.title}
+			<br />
+			{postData.date}
+			<br />
+			{postData.blogContentHTML}
 		</Layout>
 	);
 }
