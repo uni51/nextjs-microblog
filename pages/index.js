@@ -18,7 +18,7 @@ export async function getStaticProps() {
 }
 
 export default function Home({ allPostData }) {
-  console.log(allPostData);
+
   return (
     <Layout>
       <section className={utilStyles.headingMd}>
@@ -30,62 +30,22 @@ export default function Home({ allPostData }) {
       <section>
         <h2>📝エンジニアのブログ</h2>
         <div className={styles.grid}>
-          <article>
-            <Link href="/">
-            <img
-              src="/images/thumbnail01.jpg"
-              alt=""
-              className={styles.thumbnailImage}
-            />
-            </Link>
-            <Link href="/">
-              <a className={utilStyles.boldText}>SSGとSSRの使い分けの場面はいつなのか？</a>
-            </Link>
-            <br />
-            <small className={utilStyles.lightText}>February 23, 2020</small>
-          </article>
-          <article>
-            <Link href="/">
-            <img
-              src="/images/thumbnail01.jpg"
-              alt=""
-              className={styles.thumbnailImage}
-            />
-            </Link>
-            <Link href="/">
-              <a className={utilStyles.boldText}>SSGとSSRの使い分けの場面はいつなのか？</a>
-            </Link>
-            <br />
-            <small className={utilStyles.lightText}>February 23, 2020</small>
-          </article>
-          <article>
-            <Link href="/">
-            <img
-              src="/images/thumbnail01.jpg"
-              alt=""
-              className={styles.thumbnailImage}
-            />
-            </Link>
-            <Link href="/">
-              <a className={utilStyles.boldText}>SSGとSSRの使い分けの場面はいつなのか？</a>
-            </Link>
-            <br />
-            <small className={utilStyles.lightText}>February 23, 2020</small>
-          </article>
-          <article>
-            <Link href="/">
-            <img
-              src="/images/thumbnail01.jpg"
-              alt=""
-              className={styles.thumbnailImage}
-            />
-            </Link>
-            <Link href="/">
-              <a className={utilStyles.boldText}>SSGとSSRの使い分けの場面はいつなのか？</a>
-            </Link>
-            <br />
-            <small className={utilStyles.lightText}>February 23, 2020</small>
-          </article>
+          {allPostData.map(({id, title, date, thumbnail}) => (
+            <article key={id}>
+              <Link href={`/posts/${id}`}>
+              <img
+                src={thumbnail}
+                alt=""
+                className={styles.thumbnailImage}
+              />
+              </Link>
+              <Link href={`/posts/${id}`}>
+                <a className={utilStyles.boldText}>{title}</a>
+              </Link>
+              <br />
+              <small className={utilStyles.lightText}>{date}</small>
+            </article>
+            ))}
         </div>
       </section>
       
