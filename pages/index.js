@@ -29,7 +29,7 @@ export async function getStaticProps() {
 export default function Home({ allPostData }) {
 
   return (
-    <Layout>
+    <Layout home>
       <section className={utilStyles.headingMd}>
         <p>
           私はフルスタックエンジニアです。会社経営者ととして活動しています。好きなFWはLaravelです。
