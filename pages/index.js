@@ -6,7 +6,7 @@ import styles from "../styles/Home.module.css";
 import utilStyles from "../styles/utils.module.css";
 import { getPostsData } from '../lib/post';
 
-// SSGの場合
+// SSGの場合（外部のデータをビルド時に一度だけ読み込む）
 export async function getStaticProps() {
   const allPostData = getPostsData(); // id , title, date, thumbnail
 
@@ -16,6 +16,15 @@ export async function getStaticProps() {
     },
   };
 }
+
+// SSRの場合
+// export async function getServerSideProps(context) {
+//   return {
+//     props: {
+//       // コンポーネントに渡すためのProps 
+//     },
+//   };
+// }
 
 export default function Home({ allPostData }) {
 
